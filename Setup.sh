@@ -1,33 +1,15 @@
-echo "Updating and upgrading Termux..."
-pkg update -y && pkg upgrade -y
-
-echo "Changing repositories..."
-termux-change-repo
-
-echo "Installing Python and pip..."
-pkg install python python-pip -y
-
-if ! command -v python &> /dev/null
-then
-    echo "Error: Python is not installed. Retrying..."
-    pkg install python -y
+#!/bin/bash
+cd
+if [ -e "/data/data/com.termux/files/home/storage" ]; then
+	rm -rf /data/data/com.termux/files/home/storage
 fi
-
-echo "Installing other necessary packages..."
-pkg install which tsu proot termux-tools git openssh procps tor -y
-
-echo "Installing Python libraries..."
-pip install colorama pystyle requests
-
-echo "Setting up necessary access permissions..."
 termux-setup-storage
+yes | pkg update
+yes | pkg upgrade
+yes | pkg i python
+yes | pkg i python-pip
+pip install requests pytz colorama datetime logsnag
+export CFLAGS="-Wno-error=implicit-function-declaration"
+pkg install python-psutil -y
 
-echo "Installing screen..."
-pkg install screen -y
-
-echo "Creating autoexec directories if they don't exist..."
-mkdir -p /storage/emulated/0/Android/data/com.roblox.client/files/delta/autoexec
-mkdir -p /storage/emulated/0/Android/data/com.roblox.client/files/fluxus/autoexec
-mkdir -p /storage/emulated/0/RobloxClone001/Codex/Autoexec/
-
-echo "Installation complete! -- Shouko Collective | https://discord.gg/shoukohub"
+curl -Ls "https://raw.githubusercontent.com/snjyarival-png/Rejoin/refs/heads/main/Rejoin.py" -o /sdcard/Download/rejoin.py
