@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 __OWN__ = "Nguyễn Xuân Trịnh & Phạm Anh Tiến"
 __OBF__ = "PyHydra"
-__USR__ = "Huy plan v1_free - main - Non Requests Protect"
+__USR__ = "RIFT - main - Non Requests Protect"
 __GLB__ = (lambda Pyhydra: (lambda: 2010 - (lambda: 611)() - (lambda: Pyhydra)() + (lambda: 1)())())(1400)
 __CMT__ = "Don't Read This Code Because You Will Be Dizzy By My Magic!"
 __DOC__ = {
