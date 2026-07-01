@@ -57,20 +57,14 @@ while True:
         pilih_pkg = int(pilih_pkg)
 
         if 1 <= pilih_pkg <= len(packages):
-            package = packages[pilih_pkg-1]
+            package = packages[pilih_pkg - 1]
 
-        elif pilih_pkg == len(packages)+1:
+        elif pilih_pkg == len(packages) + 1:
             package = input("Masukkan Package : ")
 
     print("\nPackage dipilih :", package)
 
-    input("\nTekan ENTER...")
-
-        print("\nPackage dipilih:")
-        print(package)
-
-        input("\nTekan ENTER untuk kembali...")
-
+    input("\nTekan ENTER untuk kembali...")
     elif pilih == "3":
         clear()
         print("=== UBAH LINK ===")
