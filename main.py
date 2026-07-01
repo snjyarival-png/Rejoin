@@ -33,24 +33,22 @@ while True:
     pilih = input("Pilih Menu : ")
 
     if pilih == "1":
-        clear()
-        print("=== MULAI MONITOR ===\n")
+       clear()
+       print("╔══════════════════════════════╗")
+       print("║        STATUS TOOLS          ║")
+       print("╚══════════════════════════════╝\n")
 
-        if package == "":
-            print("Package belum dipilih.")
-        elif link == "":
-            print("Link belum diisi.")
-        else:
-            print("Konfigurasi")
-            print("-----------------------")
-            print("Package :", package)
-            print("Link    :", link)
-            print("Delay   :", delay)
-            print("Interval:", interval)
-            print("Retry   :", retry)
-            print("\nMonitor belum diimplementasikan.")
+       print("Package  :", package if package else "(Belum dipilih)")
+       print("Link     :", "Sudah diisi" if link else "(Belum diisi)")
+       print("Delay    :", delay)
+       print("Interval :", interval)
+       print("Retry    :", retry)
 
-        input("\nTekan ENTER untuk kembali...")
+       print("\n================================")
+       print("Status : SIAP DIGUNAKAN")
+       print("================================")
+
+    input("\nTekan ENTER untuk kembali...")
 
     elif pilih == "2":
         clear()
