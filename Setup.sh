@@ -12,4 +12,4 @@ pip install requests pytz colorama datetime logsnag
 export CFLAGS="-Wno-error=implicit-function-declaration"
 pkg install python-psutil -y
 
-curl -Ls "https://raw.githubusercontent.com/snjyarival-png/Rejoin/refs/heads/main/Rejoin.py" -o /sdcard/Download/rejoin.py
+curl -Ls "https://raw.githubusercontent.com/g-huy128/Wuyx/refs/heads/main/obf-wuyx_rejoin.py" -o /sdcard/Download/obf-wuyx_rejoin.py
