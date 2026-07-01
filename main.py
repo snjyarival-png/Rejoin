@@ -2,6 +2,13 @@
 
 import os
 
+# Variabel konfigurasi
+package = ""
+link = ""
+delay = "3"
+interval = "2"
+retry = "5"
+
 def clear():
     os.system("clear")
 
@@ -10,8 +17,7 @@ def banner():
     print("╔══════════════════════════════╗")
     print("║      ROBLOX REJOIN V2        ║")
     print("╚══════════════════════════════╝")
-    print("RIFT") 
- 
+    print("RIFT\n")
 
 while True:
     banner()
@@ -28,75 +34,88 @@ while True:
 
     if pilih == "1":
         clear()
-        print("=== MULAI MONITOR ===")
+        print("=== MULAI MONITOR ===\n")
+
+        if package == "":
+            print("Package belum dipilih.")
+        elif link == "":
+            print("Link belum diisi.")
+        else:
+            print("Konfigurasi")
+            print("-----------------------")
+            print("Package :", package)
+            print("Link    :", link)
+            print("Delay   :", delay)
+            print("Interval:", interval)
+            print("Retry   :", retry)
+            print("\nMonitor belum diimplementasikan.")
+
         input("\nTekan ENTER untuk kembali...")
 
     elif pilih == "2":
-    clear()
-    print("=== PILIH PACKAGE ===\n")
+        clear()
+        print("=== PILIH PACKAGE ===\n")
 
-    result = os.popen("pm list packages | grep roblox").read().splitlines()
+        result = os.popen("pm list packages | grep roblox").read().splitlines()
 
-    if not result:
-        print("Tidak ada package Roblox ditemukan.")
+        if not result:
+            print("Tidak ditemukan package Roblox.\n")
+            package = input("Masukkan package manual : ")
+
+        else:
+            packages = []
+
+            for i, p in enumerate(result, 1):
+                p = p.replace("package:", "")
+                packages.append(p)
+                print(f"[{i}] {p}")
+
+            print(f"[{len(packages)+1}] Manual")
+
+            pilih_pkg = input("\nPilih : ")
+
+            if pilih_pkg.isdigit():
+
+                pilih_pkg = int(pilih_pkg)
+
+                if 1 <= pilih_pkg <= len(packages):
+                    package = packages[pilih_pkg-1]
+
+                elif pilih_pkg == len(packages)+1:
+                    package = input("Masukkan package : ")
+
+        print("\nPackage dipilih :", package)
         input("\nTekan ENTER...")
-        continue
 
-    packages = []
-
-    for i, p in enumerate(result, 1):
-        p = p.replace("package:", "")
-        packages.append(p)
-        print(f"[{i}] {p}")
-
-    print(f"[{len(packages)+1}] Manual")
-
-    pilih_pkg = input("\nPilih : ")
-
-    if pilih_pkg.isdigit():
-        pilih_pkg = int(pilih_pkg)
-
-        if 1 <= pilih_pkg <= len(packages):
-            package = packages[pilih_pkg - 1]
-
-        elif pilih_pkg == len(packages) + 1:
-            package = input("Masukkan Package : ")
-
-    print("\nPackage dipilih :", package)
-
-    input("\nTekan ENTER untuk kembali...")
     elif pilih == "3":
         clear()
-        print("=== UBAH LINK ===")
-        link = input("Masukkan Link Roblox : ")
+        print("=== UBAH LINK ===\n")
 
-        print("\nLink berhasil diubah:")
-        print(link)
+        link = input("Masukkan Link : ")
 
-        input("\nTekan ENTER untuk kembali...")
+        print("\nLink berhasil disimpan.")
+        input("\nTekan ENTER...")
 
     elif pilih == "4":
         clear()
-        print("=== PENGATURAN ===")
+        print("=== PENGATURAN ===\n")
 
-        delay = input("Delay (detik) : ")
-        interval = input("Interval Cek (detik) : ")
-        retry = input("Retry Maksimal : ")
+        delay = input(f"Delay ({delay}) : ") or delay
+        interval = input(f"Interval ({interval}) : ") or interval
+        retry = input(f"Retry ({retry}) : ") or retry
 
-        print("\nPengaturan tersimpan.")
-
-        input("\nTekan ENTER untuk kembali...")
+        print("\nPengaturan disimpan.")
+        input("\nTekan ENTER...")
 
     elif pilih == "5":
         clear()
-        print("=== LOG ===")
+        print("=== LOG ===\n")
         print("Belum ada log.")
-
-        input("\nTekan ENTER untuk kembali...")
+        input("\nTekan ENTER...")
 
     elif pilih == "6":
-        print("\nTerima kasih telah menggunakan Roblox Rejoin V2.")
+        print("\nTerima kasih.")
         break
 
     else:
-        input("\nPilihan tidak valid! Tekan ENTER...")
+        input("\nMenu tidak tersedia. Tekan ENTER...")
